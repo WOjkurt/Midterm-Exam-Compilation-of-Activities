@@ -1,0 +1,265 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void showPatterns(int size);
+void fibonacciSequence();
+void simpleCalculator();
+void clearScreen();
+
+int main()
+{
+    int choice, size;
+    system("chcp 65001 >null");
+
+    while (1)
+    {
+        clearScreen();
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║             MAIN MENU             ║\n");
+        printf("║═══════════════════════════════════║\n");
+        printf("║          1. Shapes                ║\n");
+        printf("║          2. Fibonacci Series      ║\n");
+        printf("║          3. Simple Calculator     ║\n");
+        printf("║          4. Exit Program          ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║          Enter choice:            ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        scanf("%d", &choice);
+
+        switch (choice)
+        {
+        case 1:
+            printf("╔═══════════════════════════════════╗\n");
+            printf("║           Enter Size:             ║\n");
+            printf("╚═══════════════════════════════════╝\n");
+            scanf("%d", &size);
+            printf("\n\n");
+            showPatterns(size);
+            break;
+        case 2:
+            printf("\n\n");
+            fibonacciSequence();
+            break;
+        case 3:
+            printf("\n\n");
+            simpleCalculator();
+            break;
+        case 4:
+            printf("╔════════╗\n");
+            printf("║  Ciao  ║\n");
+            printf("╚════════╝\n");
+            exit(0);
+            break;
+        default:
+            printf("╔═══════════════════════════════════╗\n");
+            printf("║         Invalid Input             ║\n");
+            printf("╚═══════════════════════════════════╝\n");
+            break;
+        }
+    }
+
+    return 0;
+}
+
+void showPatterns(int size)
+{
+    char choice = 'Y';
+    int i, j, k;
+
+    do
+    {
+        clearScreen();
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║            Pattern 1:             ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        for (i = 1; i <= size; i++)
+        {
+            for (j = 1; j <= size; j++)
+            {
+                printf("* ");
+            }
+            printf("\n");
+        }
+
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║            Pattern 2:             ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        for (i = 1; i <= size; i++)
+        {
+            for (j = size; j >= 1; j--)
+            {
+                if (i >= j)
+                {
+                    printf("* ");
+                }
+                else
+                {
+                    printf("  ");
+                }
+            }
+            printf("\n");
+        }
+
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║            Pattern 3:             ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        for (i = 1; i <= size; i++)
+        {
+            for (j = 1; j <= i; j++)
+            {
+                printf("  ");
+            }
+            for (k = i; k <= size; k++)
+            {
+                printf(" *");
+            }
+            printf("\n");
+        }
+
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║            Pattern 4:             ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        for (i = 1; i <= size; i++)
+        {
+            for (j = size; j >= 1; j--)
+            {
+                printf(i >= j ? "* " : "  ");
+            }
+            printf("\n");
+        }
+
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║   Go Back to Main Menu? Press Y   ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        scanf(" %c", &choice);
+    } while (choice == 'Y' || choice == 'y');
+}
+
+void fibonacciSequence()
+{
+    int n, i = 1, t1 = 0, t2 = 1, nextTerm;
+    char ch = 'Y';
+
+    do
+    {
+        clearScreen();
+        printf("╔═════════════════════════════════╗\n");
+        printf("║   Fibonacci series (1-20):      ║\n");
+        printf("╚═════════════════════════════════╝\n");
+        scanf("%d", &n);
+
+        while (n > 20 || n < 1)
+        {
+            printf("╔═══════════════════════════════╗\n");
+            printf("║Number should be between (1/20)║\n");
+            printf("║      Enter number (1/20):     ║\n");
+            printf("╚═══════════════════════════════╝\n");
+            scanf("%d", &n);
+        }
+
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║          Fibonacci Series         ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+
+        t1 = 0;
+        t2 = 1;
+
+        for (i = 1; i <= n; i++)
+        {
+            printf("%d ", t1);
+            nextTerm = t1 + t2;
+
+            t1 = t2;
+            t2 = nextTerm;
+        }
+
+        printf("\n");
+        printf("╔═════════════════════════╗\n");
+        printf("║    Try again?(y/n)      ║\n");
+        printf("╚═════════════════════════╝\n");
+        scanf(" %c", &ch);
+
+    } while (ch == 'Y' || ch == 'y');
+}
+
+void simpleCalculator()
+{
+    int choice;
+    float num1, num2, result;
+    char retry;
+
+    do
+    {
+        
+        clearScreen();
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║         Simple Calculator         ║\n");
+        printf("║═══════════════════════════════════║\n");
+        printf("║          1. Addition              ║\n");
+        printf("║          2. Subtraction           ║\n");
+        printf("║          3. Multiplication        ║\n");
+        printf("║          4. Division              ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║          Enter choice:            ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        scanf("%d", &choice);
+
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║         Enter First number:       ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        scanf("%f", &num1);
+
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║         Enter Second number:      ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        scanf("%f", &num2);
+
+        switch (choice)
+        {
+        case 1:
+            result = num1 + num2;
+            printf("\nResult: %0.2f + %0.2f = %0.2f\n", num1, num2, result);
+            break;
+        case 2:
+            result = num1 - num2;
+            printf("\nResult: %0.2f - %0.2f = %0.2f\n", num1, num2, result);
+            break;
+        case 3:
+            result = num1 * num2;
+            printf("\nResult: %0.2f * %0.2f = %0.2f\n", num1, num2, result);
+            break;
+        case 4:
+            if (num2 == 0)
+            {
+               printf("╔═══════════════════════════════════╗\n");
+               printf("║       Cannot divide by zero:      ║\n");
+               printf("╚═══════════════════════════════════╝\n");
+                continue;
+            }
+            result = num1 / num2;
+            printf("\nResult: %0.2f / %0.2f = %0.2f\n", num1, num2, result);
+            break;
+        default:
+           printf("╔═══════════════════════════════════╗\n");
+           printf("║           Invalid Input           ║\n");
+           printf("╚═══════════════════════════════════╝\n");
+            break;
+        }
+
+        printf("╔═══════════════════════════════════╗\n");
+        printf("║           Try again?(y/n)         ║\n");
+        printf("╚═══════════════════════════════════╝\n");
+        scanf(" %c", &retry);
+    } while (retry == 'y' || retry == 'Y');
+}
+
+void clearScreen()
+{
+#ifdef __linux__
+    system("clear");
+#elif defined(_WIN32) || defined(WIN32)
+    system("cls");
+#endif
+}
