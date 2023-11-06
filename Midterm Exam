@@ -130,7 +130,7 @@ void showPatterns(int size)
         }
 
         printf("╔═══════════════════════════════════╗\n");
-        printf("║   Go Back to Main Menu? Press Y   ║\n");
+        printf("║   Go Back to Main Menu? Press M   ║\n");
         printf("╚═══════════════════════════════════╝\n");
         scanf(" %c", &choice);
     } while (choice == 'Y' || choice == 'y');
